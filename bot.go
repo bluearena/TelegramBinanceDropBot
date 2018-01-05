@@ -154,7 +154,7 @@ func startObserving(update bool){
 				time.Now().Format("15:04:05") + "\n24hr volume on Binance: " +
 				volume + " " + base
 			bot.Send(tgbotapi.NewMessage(configuration.YourID, msg))
-			bot.Send(tgbotapi.NewMessage(393525533, msg))
+			//bot.Send(tgbotapi.NewMessage(393525533, msg))
 			log.Print(msg)
 			exclude[p.Symbol] = struct{}{}
 		}
