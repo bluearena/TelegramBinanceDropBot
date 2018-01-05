@@ -39,7 +39,7 @@ func main() {
 	log.Printf("Authorized on account %s", bot.Self.UserName)
 
 	for{
-		time.Sleep(5*time.Minute)
+		time.Sleep(configuration.Period*time.Minute)
 		startObserving()
 	}
 
@@ -102,7 +102,7 @@ func startObserving(){
 		currPrice, _ := strconv.ParseFloat(p.Price, 64)
 		prevPrice, _ := strconv.ParseFloat(prevPrices[i].Price, 64)
 		perc := currPrice * float64(100) / prevPrice
-		if 100-perc >= 10{
+		if 100-perc >= configuration.Percentage{
 			bot.Send(tgbotapi.NewMessage(configuration.YourID, p.Symbol + " fell by " + strconv.FormatFloat(100-perc, 'f', 2, 64) + "%"))
 		}
 	}
