@@ -1,10 +1,10 @@
 package main
 
-import "time"
+
 
 type Config struct {
 	BotToken  string
 	YourID	  int64
-	Period 	  time.Duration
+	Period 	  float64
 	Percentage float64
 }
