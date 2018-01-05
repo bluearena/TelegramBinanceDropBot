@@ -39,7 +39,7 @@ func main() {
 	log.Printf("Authorized on account %s", bot.Self.UserName)
 
 	for{
-		time.Sleep(4*time.Minute)
+		time.Sleep(5*time.Minute)
 		startObserving()
 	}
 
