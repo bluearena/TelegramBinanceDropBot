@@ -1,0 +1,35 @@
+{
+	"ImportPath": "BinanceDropBot",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/adshao/go-binance",
+			"Rev": "514ca059a1e6ce388f3241b3615d58d67f08785a"
+		},
+		{
+			"ImportPath": "github.com/bitly/go-simplejson",
+			"Comment": "v0.5.0-8-g0c96595",
+			"Rev": "0c965951289cce37dec52ad1f34200fefc816777"
+		},
+		{
+			"ImportPath": "github.com/gorilla/websocket",
+			"Comment": "v1.2.0-6-ga69d9f6",
+			"Rev": "a69d9f6de432e2c6b296a947d8a5ee88f68522cf"
+		},
+		{
+			"ImportPath": "github.com/technoweenie/multipartstreamer",
+			"Comment": "v1.0.1",
+			"Rev": "a90a01d73ae432e2611d178c18367fbaa13e0154"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "b129b8e0fbeb39c8358e51a07ab6c50ad415e72e"
+		},
+		{
+			"ImportPath": "gopkg.in/telegram-bot-api.v4",
+			"Comment": "v4.6.1",
+			"Rev": "2022d04b94f50056a09962b1ac81cdd821d20a55"
+		}
+	]
+}
