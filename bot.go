@@ -64,9 +64,9 @@ func initLog() {
 		log.Print("ERROR: ")
 		log.Panic(err)
 	}
-	defer f.Close()
 	mw := io.MultiWriter(os.Stdout, f)
 	log.SetOutput(mw)
+	log.Println("Inited log")
 }
 
 func initConfig() {
@@ -101,6 +101,7 @@ func initBinance(){
 	if err != nil {
 		log.Println(err)
 	}
+	log.Println("Inited binance")
 }
 
 func startObserving(update bool){
@@ -111,6 +112,7 @@ func startObserving(update bool){
 	if err != nil {
 		log.Println(err)
 	}
+	log.Println("Got the prices")
 
 	if update{
 		prevPrices = prices
@@ -122,7 +124,6 @@ func startObserving(update bool){
 			log.Print(p.Symbol + " is exluded. Continue.")
 			continue
 		}
-		//log.Print(p.Symbol + " isn`t excluded.")
 		currPrice, _ := strconv.ParseFloat(p.Price, 64)
 		prevPrice, _ := strconv.ParseFloat(prevPrices[i].Price, 64)
 		perc := currPrice * float64(100) / prevPrice
