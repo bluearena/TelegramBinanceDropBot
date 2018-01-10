@@ -114,10 +114,12 @@ func startObserving(update bool){
 	}
 	log.Println("Got the prices")
 
-	if update{
+	if update || len(prices) != len(prevPrices){
 		prevPrices = prices
-		log.Print("Updated prices")
+		log.Printf("Updated prices, update = %t", update)
+		return
 	}
+
 
 	for i, p := range prices {
 		if _, ok := exclude[p.Symbol]; ok{
