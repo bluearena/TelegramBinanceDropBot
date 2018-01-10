@@ -116,7 +116,7 @@ func startObserving(update bool){
 
 	if update || len(prices) != len(prevPrices){
 		prevPrices = prices
-		log.Printf("Updated prices, update = %t", update)
+		log.Printf("Updated prices, update = %t, prices = %f, prevPrices = %f", update, len(prices), len(prevPrices))
 		return
 	}
 
