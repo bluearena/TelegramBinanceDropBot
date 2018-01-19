@@ -8,4 +8,5 @@ type Config struct {
 	Period 	  float64
 	Percentage float64
 	UTC float64
+	Pairs []string
 }

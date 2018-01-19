@@ -126,6 +126,8 @@ func startObserving(update bool){
 			log.Print(p.Symbol + " is exluded. Continue.")
 			continue
 		}
+
+
 		currPrice, _ := strconv.ParseFloat(p.Price, 64)
 		prevPrice, _ := strconv.ParseFloat(prevPrices[i].Price, 64)
 		perc := currPrice * float64(100) / prevPrice
@@ -139,13 +141,19 @@ func startObserving(update bool){
 				name = p.Symbol[:len(p.Symbol)-3]
 				base = p.Symbol[len(name):]
 			case 'B':
-				continue
+				name = p.Symbol[:len(p.Symbol)-3]
+				base = p.Symbol[len(name):]
 			case 'T':
 				name = p.Symbol[:len(p.Symbol)-4]
 				base = p.Symbol[len(name):]
 			}
-			
-			
+
+			if ok := checkBase(base); !ok{
+				log.Print(p.Symbol + " is exluded by config. Continue.")
+				continue
+			}
+
+
 			data, _ := client.NewPriceChangeStatsService().Symbol(p.Symbol).Do(context.Background())
 			volumeFloat, _ := strconv.ParseFloat(data.Volume, 64)
 			volume := Spacef(volumeFloat*currPrice)
@@ -153,7 +161,7 @@ func startObserving(update bool){
 				strconv.FormatFloat(100-perc, 'f', 2, 64) + "% in the last " +
 				strconv.FormatFloat(configuration.Period, 'f', 0, 64) +
 				" minutes.\nCurrently @ " +
-				strconv.FormatFloat(currPrice, 'f', -1, 64) + base + " - " +
+				strconv.FormatFloat(currPrice, 'f', -1, 64) + " " + base + " - " +
 				time.Now().Add(time.Duration(configuration.UTC)*time.Hour).Format("15:04:05") + "\n24hr volume on Binance: " +
 				volume + " " + base
 			bot.Send(tgbotapi.NewMessage(configuration.YourID, msg))
@@ -163,4 +171,13 @@ func startObserving(update bool){
 		}
 	}
 
+}
+
+func checkBase(base string) bool{
+	for _, val := range configuration.Pairs{
+		if val == base{
+			return true
+		}
+	}
+	return false
 }
