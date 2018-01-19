@@ -7,4 +7,5 @@ type Config struct {
 	YourID	  int64
 	Period 	  float64
 	Percentage float64
+	UTC float64
 }

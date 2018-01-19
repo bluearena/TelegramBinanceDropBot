@@ -153,8 +153,8 @@ func startObserving(update bool){
 				strconv.FormatFloat(100-perc, 'f', 2, 64) + "% in the last " +
 				strconv.FormatFloat(configuration.Period, 'f', 0, 64) +
 				" minutes.\nCurrently @ " +
-				strconv.FormatFloat(currPrice, 'f', -1, 64) + " - " +
-				time.Now().Format("15:04:05") + "\n24hr volume on Binance: " +
+				strconv.FormatFloat(currPrice, 'f', -1, 64) + base + " - " +
+				time.Now().Add(time.Duration(configuration.UTC)*time.Hour).Format("15:04:05") + "\n24hr volume on Binance: " +
 				volume + " " + base
 			bot.Send(tgbotapi.NewMessage(configuration.YourID, msg))
 			//bot.Send(tgbotapi.NewMessage(393525533, msg))
