@@ -116,7 +116,7 @@ func startObserving(update bool){
 
 	if update || len(prices) != len(prevPrices){
 		prevPrices = prices
-		log.Printf("Updated prices, update = %t, prices = %f, prevPrices = %f", update, len(prices), len(prevPrices))
+		log.Printf("Updated prices, update = %t, prices = %v, prevPrices = %v", update, len(prices), len(prevPrices))
 		return
 	}
 
@@ -165,7 +165,7 @@ func startObserving(update bool){
 				time.Now().Add(time.Duration(configuration.UTC)*time.Hour).Format("15:04:05") + "\n24hr volume on Binance: " +
 				volume + " " + base
 			bot.Send(tgbotapi.NewMessage(configuration.YourID, msg))
-			//bot.Send(tgbotapi.NewMessage(393525533, msg))
+			//bot.Send(tgbotapi.NewMessage(208259510, msg))
 			log.Print(msg)
 			exclude[p.Symbol] = struct{}{}
 		}
